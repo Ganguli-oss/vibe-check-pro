@@ -25,7 +25,7 @@ st.set_page_config(page_title="Vibe-Check Pro", page_icon="✨", layout="wide")
 
 # --- 2. THE UI ---
 st.title("✨ Vibe-Check: Enterprise Multi-Agent")
-st.markdown("Automated Brand DNA with **Gemini 1.5** & **Llama 3.3 (via Groq)**")
+st.markdown("Automated Brand DNA with **Gemini 3-flash-preview** & **Llama 3.3 (via Groq)**")
 
 uploaded_file = st.file_uploader("Upload Brand Image", type=["jpg", "jpeg", "png"])
 
@@ -37,7 +37,7 @@ if uploaded_file is not None:
         with st.spinner("🧬 Agent 1: Extracting Visual DNA..."):
             try:
                 # Step 1: Gemini Vision Analysis
-                gemini_model = genai.GenerativeModel('gemini-1.5-flash')
+                gemini_model = genai.GenerativeModel('gemini-3-flash-preview')
                 vision_prompt = "Analyze this image and provide technical facts: HEX colors, font style, and aesthetic vibe."
                 dna_report = gemini_model.generate_content([vision_prompt, image]).text
                 
@@ -68,4 +68,5 @@ with st.sidebar:
     st.metric("Total Audits Done", f"{st.session_state.credits_used}")
     st.write("---")
     st.info("**Architecture:** Multi-Modal Agentic Workflow (Python-Native)")
+
     st.write("Logged in as: **Professional Brand Strategist**")
